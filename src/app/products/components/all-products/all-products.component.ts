@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-products',
@@ -13,7 +14,7 @@ export class AllProductsComponent implements OnInit{
   loader:boolean = false;
   title:string="Categories";
 
-  constructor(public service:ProductsService){}
+  constructor(public service:ProductsService,public router:Router){}
   ngOnInit(): void {
       this.getProducts();
       this.getCategories();
@@ -73,6 +74,11 @@ export class AllProductsComponent implements OnInit{
       localStorage.setItem("cart",JSON.stringify(this.cartProducts));
     }
 
+  }
+  goToProduct(product:any){
+    let productId =product.id;
+    console.log(productId);
+    this.router.navigate(["/details",productId]);
   }
 }
 

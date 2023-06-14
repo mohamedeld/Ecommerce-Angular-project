@@ -6,8 +6,9 @@ import { AllCartsComponent } from './carts/components/all-carts/all-carts.compon
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/products', pathMatch: 'full' },
   {path:"products",component:AllProductsComponent},
-  {path:"details",component:AllDetailsComponent},
+  {path:"details/:id",component:AllDetailsComponent},
   {path:"carts",component:AllCartsComponent},
   {path:"**",component:PageNotFoundComponent}
 ];

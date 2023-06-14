@@ -4,7 +4,7 @@
   </div>
 </div>
 <div class="row" *ngIf="!loader">
-  <div class="col-sm-12 col-md-3" *ngFor="let product of products">
+  <div class="col-sm-12 col-md-3" *ngFor="let product of products" (click)="goToProduct(product)">
     <app-product-item [product]="product" (item)="addCart($event)"></app-product-item>
   </div>
 </div>
