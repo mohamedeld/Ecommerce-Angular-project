@@ -7,14 +7,12 @@ import { ProductsService } from '../../services/products.service';
   styleUrls: ['./all-products.component.css']
 })
 export class AllProductsComponent implements OnInit{
+  cartProducts: any[] = [];
   products:any[] = [];
   categories:any[] =[];
   loader:boolean = false;
-  imgStyle={
-    width:"100%",
-    height:"20rem",
-    objectFit:"cover"
-  }
+  title:string="Categories";
+
   constructor(public service:ProductsService){}
   ngOnInit(): void {
       this.getProducts();
@@ -58,6 +56,23 @@ export class AllProductsComponent implements OnInit{
         console.log(err);
       this.loader = false;
     });
+  }
+  addCart(event:any){
+    if("cart" in localStorage){
+      this.cartProducts = JSON.parse(localStorage.getItem("cart")!);
+      let existId = this.cartProducts.find(item=> item.item.id === event.item.id);
+      if(existId){
+        return;
+      }else{
+        this.cartProducts.push(event);
+        localStorage.setItem("cart",JSON.stringify(this.cartProducts))
+      }
+    }else{
+
+      this.cartProducts.push(event);
+      localStorage.setItem("cart",JSON.stringify(this.cartProducts));
+    }
+
   }
 }
 

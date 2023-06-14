@@ -4,23 +4,28 @@ import { AllProductsComponent } from './components/all-products/all-products.com
 import { AllDetailsComponent } from './components/all-details/all-details.component';
 import { ProductsService } from './services/products.service';
 import { SharedModule } from '../shared/shared.module';
+import { ProductItemComponent } from './product-item/product-item.component';
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
     AllProductsComponent,
-    AllDetailsComponent
+    AllDetailsComponent,
+    ProductItemComponent
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ],
   providers:[
     ProductsService
   ],
   exports:[
-    AllProductsComponent
+    AllProductsComponent,FormsModule
+
   ]
 })
 export class ProductsModule { }

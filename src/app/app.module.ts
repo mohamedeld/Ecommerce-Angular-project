@@ -9,7 +9,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsModule } from './products/products.module';
-
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,8 +23,10 @@ import { ProductsModule } from './products/products.module';
     AppRoutingModule,
     SharedModule,
     HttpClientModule,
-    ProductsModule
+    ProductsModule,
+    FormsModule
   ],
+  exports:[FormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
