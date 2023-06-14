@@ -9,6 +9,7 @@ import { ProductsService } from '../../services/products.service';
 export class AllProductsComponent implements OnInit{
   products:any[] = [];
   categories:any[] =[];
+  loader:boolean = false;
   imgStyle={
     width:"100%",
     height:"20rem",
@@ -21,27 +22,42 @@ export class AllProductsComponent implements OnInit{
   }
 
   getProducts(){
+    this.loader = true;
     this.service.getAllProductsService().subscribe((data:any)=>{
       this.products = data;
-    },err=>console.log(err.message));
+      this.loader= false;
+    },err=>{
+      console.log(err.message);
+      this.loader= false;
+    });
   }
   getCategories(){
+    this.loader = true;
     this.service.getAllCategories().subscribe((data:any)=>{
       this.categories = data;
-    },err=> console.log(err.message))
+      this.loader = false;
+    },err=> {
+      console.log(err.message);
+      this.loader = false;
+    })
   }
   filterCategory(event:any){
     let value = event.target.value;
-    this.getProductCategory(value);
-  }
-  getProductCategory(word:string){
-    if(word === "All"){
+    if(value === "All"){
       this.getProducts();
     }else{
+      this.getProductCategory(value);
+    }
+  }
+  getProductCategory(word:string){
+    this.loader = true;
       this.service.getProductByCategory(word).subscribe((data:any)=>{
         this.products = data;
-      },err=>console.log(err));
-    }
+        this.loader = false;
+      },err=>{
+        console.log(err);
+      this.loader = false;
+    });
   }
 }
 
