@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsModule } from './products/products.module';
 import {FormsModule} from '@angular/forms';
+import { CartsModule } from './carts/carts.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {FormsModule} from '@angular/forms';
     SharedModule,
     HttpClientModule,
     ProductsModule,
-    FormsModule
+    FormsModule,
+    CartsModule
   ],
   exports:[FormsModule],
   providers: [],

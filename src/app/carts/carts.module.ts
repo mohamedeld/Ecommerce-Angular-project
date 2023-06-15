@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AllCartsComponent } from './components/all-carts/all-carts.component';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -11,7 +12,12 @@ import { CartDetailsComponent } from './components/cart-details/cart-details.com
     CartDetailsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
+  ],
+  exports:[
+    AllCartsComponent,
+    CartDetailsComponent
   ]
 })
 export class CartsModule { }

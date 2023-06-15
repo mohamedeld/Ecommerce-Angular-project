@@ -11,7 +11,7 @@
       <button class="btn btn-success" *ngIf="!addBtn" (click)="addBtn = true">Add To Card</button>
       <div class="d-flex justify-content-start align-items-center" *ngIf="addBtn">
         <input type="number" class="form-control w-50" [(ngModel)]="amount"/>
-        <button class="btn btn-primary" (click)="addToCart()">Add</button>
+        <button class="btn btn-primary" (click)="addToCart();addBtn = false">Add</button>
       </div>
       <span>50 L.E</span>
     </div>
