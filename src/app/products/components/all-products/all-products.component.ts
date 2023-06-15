@@ -75,10 +75,10 @@ export class AllProductsComponent implements OnInit{
     }
 
   }
-  goToProduct(product:any){
-    let productId =product.id;
-    console.log(productId);
+  addToProduct(event:any){
+    let productId =event.id;
     this.router.navigate(["/details",productId]);
   }
+
 }
 

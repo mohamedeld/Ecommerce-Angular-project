@@ -1,8 +1,12 @@
 <div class="card my-5">
-  <img class="card-img-top" src="{{product.image}}" alt="Card image cap" [ngStyle]=imgStyle>
-  <div class="card-body">
-    <h5 class="card-title">{{product.title}}</h5>
-    <p class="card-text">{{product.description| slice:0:100}}</p>
+  <div  (click)="addProduct()">
+    <img class="card-img-top" src="{{product.image}}" alt="Card image cap" [ngStyle]=imgStyle>
+    <div class="card-body">
+      <h5 class="card-title">{{product.title}}</h5>
+      <p class="card-text">{{product.description| slice:0:100}}</p>
+    </div>
+  </div>
+
     <div class="d-flex justify-content-between align-items-center mt-4">
       <button class="btn btn-success" *ngIf="!addBtn" (click)="addBtn = true">Add To Card</button>
       <div class="d-flex justify-content-start align-items-center" *ngIf="addBtn">
@@ -13,4 +17,3 @@
     </div>
 
   </div>
-</div>

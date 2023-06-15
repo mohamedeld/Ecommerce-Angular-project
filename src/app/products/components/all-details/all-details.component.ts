@@ -10,7 +10,9 @@ import { ProductsService } from '../../services/products.service';
 export class AllDetailsComponent implements OnInit {
   id:number=0;
   data:any = {};
+  loader:boolean=false;
   constructor(private activateRouter:ActivatedRoute,private service:ProductsService,private router:Router) { }
+
   ngOnInit(): void {
     this.activateRouter.params.subscribe((params=>{
       this.id = params["id"];
@@ -19,8 +21,13 @@ export class AllDetailsComponent implements OnInit {
   }
 
   getProduct(){
+    this.loader = true;
     this.service.getProductById(this.id).subscribe(res=>{
       this.data = res;
+      this.loader =false;
+    },err=>{
+      console.log(err.message);
+      this.loader = false;
     })
   }
   goHome(){

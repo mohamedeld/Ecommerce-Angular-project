@@ -1,11 +1,13 @@
-<div class="d-flex justify-content-center align-items-center my-4">
-  <div class="card w-50">
-    <img class="card-img-top" [src]="data.image" alt="Card image cap"/>
-    <div class="card-body">
-      <h5 class="card-title">{{data.title}}</h5>
-      <p class="card-text">{{data.description}}</p>
-      <a class="btn btn-primary" (click)="goHome()">Go Home</a>
+<div class="text-center">
+  <div class="d-flex justify-content-center align-items-center my-4" *ngIf="!loader">
+    <div class="card w-50">
+      <img class="card-img-top" [src]="data.image" alt="Card image cap"/>
+      <div class="card-body">
+        <h5 class="card-title">{{data.title}}</h5>
+        <p class="card-text">{{data.description}}</p>
+        <a class="btn btn-primary" (click)="goHome()">Go Home</a>
+      </div>
     </div>
   </div>
-
+  <app-spinner *ngIf="loader"></app-spinner>
 </div>
