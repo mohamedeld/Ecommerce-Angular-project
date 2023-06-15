@@ -19,27 +19,27 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of productCarts">
+      <tr *ngFor="let item of productCarts; let index = index">
         <th scope="row">1</th>
         <td><img [src]="item.item.image" class="img-fluid" [ngStyle]="imageStyle" alt=""></td>
         <td>{{item.item.title}}</td>
         <td>{{item.item.price}} L.E</td>
         <td>
           <div class="d-flex justify-content-center align-items-center">
-            <button class="btn btn-primary mx-2">+</button>
-            <input type="number" class="form-control w-25" [(ngModel)]="item.quantity" min="1"/>
-            <button class="btn btn-primary mx-2">-</button>
+            <button class="btn btn-primary mx-2" (click)="increaseAmount(index)">+</button>
+            <input type="number" class="form-control w-25" (change)="detectChange()" [(ngModel)]="item.quantity" min="1"/>
+            <button class="btn btn-primary mx-2" (click)="decreaseAmount(index)">-</button>
           </div>
         </td>
-        <td>{{item.item.price * item.quantity}} L.E</td>
-        <td><button class="btn btn-danger">Delete</button></td>
+        <td>{{(item.item.price * item.quantity.toFixed(2))}} L.E</td>
+        <td><button class="btn btn-danger" (click)="deleteProduct(index)">Delete</button></td>
       </tr>
       <tr>
         <td></td>
         <td></td>
         <td></td>
         <td></td>
-        <td>Total : 1500</td>
+        <td>Total : {{total}}</td>
         <td><button class="btn btn-success">Order Now</button></td>
       </tr>
     </tbody>
